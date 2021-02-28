@@ -1,5 +1,7 @@
 using CommanderGQL.Data;
 using CommanderGQL.GraphQL;
+using CommanderGQL.GraphQL.Commands;
+using CommanderGQL.GraphQL.Platforms;
 using GraphQL.Server.Ui.Voyager;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,7 +29,10 @@ namespace CommanderGQL
             services
             .AddGraphQLServer()
             .AddQueryType<Query>()
-            .AddProjections();
+            .AddType<PlatformType>()
+            .AddType<CommandType>()
+            .AddFiltering()
+            .AddSorting();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

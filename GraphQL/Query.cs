@@ -9,17 +9,13 @@ namespace CommanderGQL.GraphQL
     public class Query
     {
         [UseDbContext(typeof(AppDbContext))]
-        [UseProjection]
-        public IQueryable<Platform> GetPlatform([ScopedService] AppDbContext context)
-        {
-            return context.Platforms;
-        }
+        [UseFiltering]
+        [UseSorting]
+        public IQueryable<Platform> GetPlatform([ScopedService] AppDbContext context) => context.Platforms;
 
         [UseDbContext(typeof(AppDbContext))]
-        [UseProjection]
-        public IQueryable<Command> GetCommands([ScopedService] AppDbContext context)
-        {
-            return context.Commands;
-        }
+        [UseFiltering]
+        [UseSorting]
+        public IQueryable<Command> GetCommands([ScopedService] AppDbContext context) => context.Commands;
     }
 }
