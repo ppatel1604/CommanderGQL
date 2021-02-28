@@ -1,0 +1,12 @@
+version: '3'
+services:
+  sqlserver:
+    image: "mcr.microsoft.com/mssql/server:2017-latest"
+    environment:
+      ACCEPT_EULA: "y"
+      SA_PASSWORD: ${SA_PASSWORD}
+      MSSQL_PID: "EXPRESS"
+    ports:
+      - "1433:1433"
+    volumes:
+      - C:\MSSQL\DATA:/var/opt/mssql/data
